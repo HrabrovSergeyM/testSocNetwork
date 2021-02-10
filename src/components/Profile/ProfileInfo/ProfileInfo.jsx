@@ -3,6 +3,7 @@ import Preloader from "../../common/preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import classes from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import defaultAvatar from "../../../asssets/images/man-avatar-profile-round-icon_24640-14046.jpg";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -15,7 +16,10 @@ const ProfileInfo = (props) => {
       </div> */}
       <div className={classes.descriptionBlog}>
         {" "}
-        <img src={props.profile.photos.large} />
+        <img
+          className={classes.avatar}
+          src={props.profile.photos.large || defaultAvatar}
+        />
         <ProfileStatusWithHooks
           status={props.status}
           updateStatus={props.updateStatus}
