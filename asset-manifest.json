@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/testSocNetwork/static/css/main.5e05aeb1.chunk.css",
+    "main.js": "/testSocNetwork/static/js/main.ec96ea18.chunk.js",
+    "main.js.map": "/testSocNetwork/static/js/main.ec96ea18.chunk.js.map",
+    "runtime-main.js": "/testSocNetwork/static/js/runtime-main.393c5f67.js",
+    "runtime-main.js.map": "/testSocNetwork/static/js/runtime-main.393c5f67.js.map",
+    "static/js/2.24215a74.chunk.js": "/testSocNetwork/static/js/2.24215a74.chunk.js",
+    "static/js/2.24215a74.chunk.js.map": "/testSocNetwork/static/js/2.24215a74.chunk.js.map",
+    "static/css/3.f9e2a330.chunk.css": "/testSocNetwork/static/css/3.f9e2a330.chunk.css",
+    "static/js/3.804e9026.chunk.js": "/testSocNetwork/static/js/3.804e9026.chunk.js",
+    "static/js/3.804e9026.chunk.js.map": "/testSocNetwork/static/js/3.804e9026.chunk.js.map",
+    "static/css/4.856a2bc8.chunk.css": "/testSocNetwork/static/css/4.856a2bc8.chunk.css",
+    "static/js/4.814373c2.chunk.js": "/testSocNetwork/static/js/4.814373c2.chunk.js",
+    "static/js/4.814373c2.chunk.js.map": "/testSocNetwork/static/js/4.814373c2.chunk.js.map",
+    "index.html": "/testSocNetwork/index.html",
+    "precache-manifest.b01e9483bfef8bef168962bcfeaf43a3.js": "/testSocNetwork/precache-manifest.b01e9483bfef8bef168962bcfeaf43a3.js",
+    "service-worker.js": "/testSocNetwork/service-worker.js",
+    "static/css/3.f9e2a330.chunk.css.map": "/testSocNetwork/static/css/3.f9e2a330.chunk.css.map",
+    "static/css/4.856a2bc8.chunk.css.map": "/testSocNetwork/static/css/4.856a2bc8.chunk.css.map",
+    "static/css/main.5e05aeb1.chunk.css.map": "/testSocNetwork/static/css/main.5e05aeb1.chunk.css.map",
+    "static/js/2.24215a74.chunk.js.LICENSE.txt": "/testSocNetwork/static/js/2.24215a74.chunk.js.LICENSE.txt",
+    "static/js/3.804e9026.chunk.js.LICENSE.txt": "/testSocNetwork/static/js/3.804e9026.chunk.js.LICENSE.txt",
+    "static/media/man-avatar-profile-round-icon_24640-14046.jpg": "/testSocNetwork/static/media/man-avatar-profile-round-icon_24640-14046.68a5aa10.jpg",
+    "static/media/preloader.svg": "/testSocNetwork/static/media/preloader.abffbc11.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.393c5f67.js",
+    "static/js/2.24215a74.chunk.js",
+    "static/css/main.5e05aeb1.chunk.css",
+    "static/js/main.ec96ea18.chunk.js"
+  ]
+}
