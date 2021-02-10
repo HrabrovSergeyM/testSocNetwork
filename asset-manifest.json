@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/testSocNetwork/static/css/main.5e05aeb1.chunk.css",
-    "main.js": "/testSocNetwork/static/js/main.33169f65.chunk.js",
-    "main.js.map": "/testSocNetwork/static/js/main.33169f65.chunk.js.map",
+    "main.js": "/testSocNetwork/static/js/main.af7e5b6a.chunk.js",
+    "main.js.map": "/testSocNetwork/static/js/main.af7e5b6a.chunk.js.map",
     "runtime-main.js": "/testSocNetwork/static/js/runtime-main.be88b3e6.js",
     "runtime-main.js.map": "/testSocNetwork/static/js/runtime-main.be88b3e6.js.map",
     "static/js/2.d3173f45.chunk.js": "/testSocNetwork/static/js/2.d3173f45.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/4.eec5bfd8.chunk.js": "/testSocNetwork/static/js/4.eec5bfd8.chunk.js",
     "static/js/4.eec5bfd8.chunk.js.map": "/testSocNetwork/static/js/4.eec5bfd8.chunk.js.map",
     "index.html": "/testSocNetwork/index.html",
-    "precache-manifest.4ef78ff1813b8f4ccd119fb74def65c1.js": "/testSocNetwork/precache-manifest.4ef78ff1813b8f4ccd119fb74def65c1.js",
+    "precache-manifest.880b90ccac861bc620537fbfac80bcb9.js": "/testSocNetwork/precache-manifest.880b90ccac861bc620537fbfac80bcb9.js",
     "service-worker.js": "/testSocNetwork/service-worker.js",
     "static/css/3.f9e2a330.chunk.css.map": "/testSocNetwork/static/css/3.f9e2a330.chunk.css.map",
     "static/css/4.856a2bc8.chunk.css.map": "/testSocNetwork/static/css/4.856a2bc8.chunk.css.map",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.be88b3e6.js",
     "static/js/2.d3173f45.chunk.js",
     "static/css/main.5e05aeb1.chunk.css",
-    "static/js/main.33169f65.chunk.js"
+    "static/js/main.af7e5b6a.chunk.js"
   ]
 }
