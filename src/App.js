@@ -96,7 +96,7 @@ let AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <HashRouter hashType={slash}>
+    <HashRouter hashType={'slash'}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
