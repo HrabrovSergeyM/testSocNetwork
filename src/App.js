@@ -96,7 +96,7 @@ let AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter hashType={slash}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
