@@ -31,6 +31,9 @@ const LoginForm = (props) => {
         <Field type={"checkbox"} name={"rememberMe"} component={Input} />{" "}
         remember me
       </div>
+
+      {props.captchaUrl && <img src={props.captchaUrl} />}
+
       {props.error && (
         <div className={classes.formSummaryError}>{props.error}</div>
       )}
@@ -55,11 +58,12 @@ const Login = (props) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
     </div>
   );
 };
 const mapStateToProps = (state) => ({
+  captchaUrl: state.auth.captchaUrl,
   isAuth: state.auth.isAuth,
 });
 export default connect(mapStateToProps, { login })(Login);

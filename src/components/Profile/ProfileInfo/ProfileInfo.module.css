@@ -2,6 +2,6 @@
   padding: 10px;
 }
 
-.avatar {
-  width: 200px;
+.mainAvatar {
+  max-width: 200px;
 }
