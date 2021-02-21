@@ -3,7 +3,14 @@ import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import { BrowserRouter, HashRouter, Route, withRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Redirect,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -40,46 +47,53 @@ class App extends Component {
       <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
-        <div className="app-wrapper-content">
-          <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-          <Route
-            exact
-            path="/dialogs"
-            render={() => {
-              return (
-                <Suspense
-                  fallback={
-                    <div>
-                      <Preloader />
-                    </div>
-                  }
-                >
-                  <DialogsContainer />
-                </Suspense>
-              );
-            }}
-          />
-          <Route
-            path="/users"
-            render={() => {
-              return (
-                <Suspense
-                  fallback={
-                    <div>
-                      <Preloader />
-                    </div>
-                  }
-                >
-                  <UsersContainer />
-                </Suspense>
-              );
-            }}
-          />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <Login />} />
-        </div>
+        <Switch>
+          <div className="app-wrapper-content">
+            <Route exact path="/" render={() => <Redirect to={"/profile"} />} />
+
+            <Route
+              path="/profile/:userId?"
+              render={() => <ProfileContainer />}
+            />
+            <Route
+              exact
+              path="/dialogs"
+              render={() => {
+                return (
+                  <Suspense
+                    fallback={
+                      <div>
+                        <Preloader />
+                      </div>
+                    }
+                  >
+                    <DialogsContainer />
+                  </Suspense>
+                );
+              }}
+            />
+            <Route
+              path="/users"
+              render={() => {
+                return (
+                  <Suspense
+                    fallback={
+                      <div>
+                        <Preloader />
+                      </div>
+                    }
+                  >
+                    <UsersContainer />
+                  </Suspense>
+                );
+              }}
+            />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/login" render={() => <Login />} />
+          </div>
+        </Switch>
       </div>
     );
   }
@@ -96,7 +110,7 @@ let AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <HashRouter hashType={'slash'}>
+    <HashRouter hashType={"slash"}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
