@@ -53,7 +53,7 @@ export const login = (email, password, rememberMe, captcha) => async (
   let response = await authAPI.login(email, password, rememberMe, captcha);
   if (response.data.resultCode === 0) {
     // success, get auth data
-    debugger;
+
     dispatch(getAuthUserData());
   } else {
     if (response.data.resultCode === 10) {
@@ -69,9 +69,13 @@ export const login = (email, password, rememberMe, captcha) => async (
 };
 
 export const getCaptchaUrl = () => async (dispatch) => {
-  const response = await securityAPI.getCaptchaUrl();
-  const captchaUrl = response.data.url;
-  dispatch(getCaptchaUrlSuccess(captchaUrl));
+  try {
+    const response = await securityAPI.getCaptchaUrl();
+    const captchaUrl = response.data.url;
+    dispatch(getCaptchaUrlSuccess(captchaUrl));
+  } catch (error) {
+    debugger;
+  }
 };
 
 export const logout = () => async (dispatch) => {

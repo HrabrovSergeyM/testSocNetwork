@@ -9,7 +9,6 @@ import {
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
 const MyPosts = (props) => {
-  console.log("render myposts");
   let postsElement = props.posts.map((element) => (
     <Post message={element.message} likesCount={element.likesCount} />
   ));

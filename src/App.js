@@ -34,8 +34,21 @@ const UsersContainer = React.lazy(() =>
 );
 
 class App extends Component {
+  catchAllUnhandledError = (promiseRejectEvent) => {
+    alert("some error");
+    console.error(promiseRejectEvent);
+  };
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledError);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      "unhandledrejection",
+      this.catchAllUnhandledError
+    );
   }
 
   render() {
