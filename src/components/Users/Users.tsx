@@ -6,7 +6,20 @@ import * as axios from "axios";
 import { usersAPI } from "../../api/api";
 import Paginator from "./Paginator";
 import User from "./User";
-let Users = (props) => {
+import { UserType } from "../../types/types";
+
+type PropsType = {
+  totalUserCount: number,
+  pageSize: number,
+  currentPage: number,
+  onPageChanged: (pageNumber: number) => void,
+  users: Array<UserType>
+  followingInProgress: Array<number>
+  follow: () => void
+  unfollow: () => void
+}
+
+let Users: React.FC<PropsType> = (props) => {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
