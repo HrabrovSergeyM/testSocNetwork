@@ -96,7 +96,7 @@ class App extends Component {
                       </div>
                     }
                   >
-                    <UsersContainer />
+                    <UsersContainer pageTitle={"myTitle"} />
                   </Suspense>
                 );
               }}
