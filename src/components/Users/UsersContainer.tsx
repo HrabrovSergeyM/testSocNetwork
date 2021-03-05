@@ -21,6 +21,7 @@ import {
   getTotalUserCount,
 } from "../../redux/usersSelectors";
 import { UserType } from "../../types/types";
+import { AppStateType } from "../../redux/reduxStore";
 
 type PropsType = {
   currentPage: number
@@ -28,7 +29,10 @@ type PropsType = {
   totalUserCount: number
   isFetching: boolean
   users: Array<UserType>
+  followingInProgress: Array<number>
 
+  follow: () => void
+  unfollow: () => void
   getUsers: (currentPage: number, pageSize: number) => void
   
 }
@@ -62,7 +66,7 @@ class UsersContainer extends React.Component<PropsType> {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
   return {
     // users: getAllUsers(state),
     users: getUsersSelector(state),
