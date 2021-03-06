@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import {
   follow,
   unfollow,
-  setCurrentPage,
-  setFollowingProgress,
   getUsers,
 } from "../../redux/usersReducer";
 import classes from "./Users.module.css";
@@ -77,7 +75,6 @@ class UsersContainer extends React.Component<PropsType> {
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
-    // users: getAllUsers(state),
     users: getUsersSelector(state),
     pageSize: getPageSize(state),
     totalUserCount: getTotalUserCount(state),
@@ -92,7 +89,6 @@ export default compose(
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
- 
     getUsers,
   })
 )(UsersContainer);

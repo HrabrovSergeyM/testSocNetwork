@@ -1,9 +1,5 @@
 import React from "react";
 import classes from "./Users.module.css";
-import defaultAvatar from "../../asssets/images/man-avatar-profile-round-icon_24640-14046.jpg";
-import { NavLink } from "react-router-dom";
-import * as axios from "axios";
-import { usersAPI } from "../../api/api";
 import Paginator from "./Paginator";
 import User from "./User";
 import { UserType } from "../../types/types";

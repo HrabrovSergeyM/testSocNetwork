@@ -1,3 +1,4 @@
+import { ResultCodesEnum } from './../api/api';
 import { stopSubmit } from "redux-form";
 import { authAPI, securityAPI } from "../api/api";
 
@@ -70,29 +71,28 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccesAct
 
 export const getAuthUserData = () => async (dispatch: any) => {
   // делаем функцию асинхронной
-  let response = await authAPI.me(); // await заставляет ждать до тех пор, пока промис справа от await не выполнится
-  if (response.data.resultCode === 0) {
-    let { id, login, email } = response.data.data;
+  let meData = await authAPI.me(); // await заставляет ждать до тех пор, пока промис справа от await не выполнится
+  if (meData.resultCode === ResultCodesEnum.Success) {
+    let { id, login, email } = meData.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
 };
 
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (
+export const login = (email: string, password: string, rememberMe: boolean, captcha: null | string) => async (
   dispatch: any
 ) => {
-  let response = await authAPI.login(email, password, rememberMe, captcha);
-  if (response.data.resultCode === 0) {
+  let data = await authAPI.login(email, password, rememberMe, captcha);
+  if (data.resultCode === ResultCodesEnum.Success) {
     // success, get auth data
-
     dispatch(getAuthUserData());
   } else {
-    if (response.data.resultCode === 10) {
+    if (data.resultCode === ResultCodesEnum.Captcha) {
       dispatch(getCaptchaUrl());
     }
 
     let message =
-      response.data.messages.length > 0
-        ? response.data.messages[0]
+      data.messages.length > 0
+        ? data.messages[0]
         : "Some error";
     dispatch(stopSubmit("login", { _error: message }));
   }
