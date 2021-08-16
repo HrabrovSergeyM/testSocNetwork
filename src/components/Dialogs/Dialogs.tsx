@@ -1,65 +1,40 @@
-import React from "react";
-import classes from "./Dialogs.module.css";
-import Message from "./Message/Message";
+import React from 'react';
+import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
-import {
-  addMessageActionCreator,
-  updateNewMessageTextActionCreator,
-} from "../../redux/dialogsReducer";
-import { Redirect } from "react-router-dom";
-import { Field, Form, reduxForm } from "redux-form";
+import Message from "./Message/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
-import { InitialStateType } from "../../redux/dialogsReducer";
-
-export type NewMessageFormType = {
-  newMessageBody: string
-}
+import {InitialStateType} from '../../redux/dialogsReducer';
 
 type PropsType = {
-  dialogsPage: InitialStateType
-  sendMessage: (messageText: string) => void
-  isAuth: 
+    dialogsPage: InitialStateType
+    sendMessage: (messageText: string) => void
 }
-type MapStateType = {
-  
-}
-type MapDispatchType = {
-  
+
+export type NewMessageFormValuesType = {
+    newMessageBody: string
 }
 
 const Dialogs: React.FC<PropsType> = (props) => {
-  let state = props.messagesPage;
+    let state = props.dialogsPage
 
-  let dialogsElements = props.messagesPage.dialogsData.map((element) => (
-    <DialogItem name={element.name} key={element.id} id={element.id} />
-  ));
+    let dialogsElements = state.dialogsData.map( d => <DialogItem name={d.name} key={d.id} id={d.id} />  );
+    let messagesElements = state.messagesData.map( m => <Message message={m.message} key={m.id} /> );
 
-  let messagesElement = props.messagesPage.messagesData.map((element) => (
-    <Message key={element.id} message={element.message} />
-  ));
+    let addNewMessage = (values: NewMessageFormValuesType) => {
+        props.sendMessage(values.newMessageBody);
+    }
 
-  let newMessageElement = React.createRef();
-
-  let addNewMessage = (values: {newMessageBody: string}) => {
-    props.sendMessage(values.newMessageBody);
-  };
-
-  if (!props.isAuth) return <Redirect to={"/login"} />;
-
-  return (
-    <div className={classes.dialogs}>
-      <div className={classes.dialogsItems}>{dialogsElements}</div>
-      <div className={classes.messages}>
-        {messagesElement}
-
-        <div>
-          <AddMessageForm onSubmit={addNewMessage} />
+    return (
+        <div className={classes.dialogs}>
+            <div className={classes.dialogsItems}>
+                { dialogsElements }
+            </div>
+            <div className={classes.messages}>
+                <div>{ messagesElements }</div>
+            </div>
+            <AddMessageForm onSubmit={addNewMessage} />
         </div>
-      </div>
-    </div>
-  );
-};
-
-
+    )
+}
 
 export default Dialogs;

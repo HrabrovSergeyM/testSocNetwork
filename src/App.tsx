@@ -14,15 +14,13 @@ import {
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
-// import UsersContainer from "./components/Users/UsersContainer";
-import Login from "./components/Login/Login";
+import {LoginPage} from './components/Login/LoginPage'
 import { Component } from "react";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/appReducer";
 import { compose } from "redux";
 import Preloader from "./components/common/preloader/Preloader";
-import store from "./redux/reduxStore";
+import store, { AppStateType } from "./redux/reduxStore";
 import { Provider } from "react-redux";
 import { Suspense } from "react";
 
@@ -33,10 +31,15 @@ const UsersContainer = React.lazy(() =>
   import("./components/Users/UsersContainer")
 );
 
-class App extends Component {
-  catchAllUnhandledError = (promiseRejectEvent) => {
+type MapsPropsType = ReturnType<typeof mapStateToProps> 
+type DispatchPropsType = {
+  initializeApp: () => void
+}
+
+class App extends Component<MapsPropsType & DispatchPropsType> {
+  catchAllUnhandledError = (e: PromiseRejectionEvent) => {
     alert("some error");
-    console.error(promiseRejectEvent);
+    console.error(e);
   };
 
   componentDidMount() {
@@ -106,7 +109,7 @@ class App extends Component {
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />
             <Route path="/settings" render={() => <Settings />} />
-            <Route path="/login" render={() => <Login />} />
+            <Route path="/login" render={() => <LoginPage />} />
           </div>
         </Switch>
       </div>
@@ -114,16 +117,16 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized,
 });
 
-let AppContainer = compose(
+let AppContainer = compose<React.ComponentType>(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
 
-const MainApp = (props) => {
+const MainApp: React.FC = () => {
   return (
     <HashRouter hashType={"slash"}>
       <Provider store={store}>
