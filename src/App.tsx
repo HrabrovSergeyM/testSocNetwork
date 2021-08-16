@@ -4,7 +4,6 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import {
-  BrowserRouter,
   HashRouter,
   Redirect,
   Route,
