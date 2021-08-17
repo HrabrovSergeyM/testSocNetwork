@@ -22,6 +22,7 @@ import Preloader from "./components/common/preloader/Preloader";
 import store, { AppStateType } from "./redux/reduxStore";
 import { Provider } from "react-redux";
 import { Suspense } from "react";
+import { withSuspense } from "./hoc/withSuspense";
 
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
@@ -34,6 +35,9 @@ type MapsPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
   initializeApp: () => void
 }
+
+const SuspendedDialogs = withSuspense(DialogsContainer)
+const SuspendedProfile = withSuspense(ProfileContainer)
 
 class App extends Component<MapsPropsType & DispatchPropsType> {
   catchAllUnhandledError = (e: PromiseRejectionEvent) => {
@@ -68,24 +72,12 @@ class App extends Component<MapsPropsType & DispatchPropsType> {
 
             <Route
               path="/profile/:userId?"
-              render={() => <ProfileContainer />}
+              render={() => <SuspendedProfile />}
             />
             <Route
               exact
               path="/dialogs"
-              render={() => {
-                return (
-                  <Suspense
-                    fallback={
-                      <div>
-                        <Preloader />
-                      </div>
-                    }
-                  >
-                    <DialogsContainer />
-                  </Suspense>
-                );
-              }}
+              render={() => <SuspendedDialogs/>}
             />
             <Route
               path="/users"
