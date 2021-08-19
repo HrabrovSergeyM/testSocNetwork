@@ -2,7 +2,6 @@ import React from "react";
 import classes from './ProfileInfo.module.css';
 import {createField, GetStringKeys, Input, Textarea} from "../../common/FormsControls/FormsControls";
 import {InjectedFormProps, reduxForm} from "redux-form";
-import style from "../../common/FormsControls/FormsControls.module.css";
 import {ProfileType} from '../../../types/types';
 
 type PropsType = {
