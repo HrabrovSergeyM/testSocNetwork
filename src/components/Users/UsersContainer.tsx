@@ -6,10 +6,8 @@ import {
   unfollow,
   getUsers,
 } from "../../redux/usersReducer";
-import classes from "./Users.module.css";
 import Preloader from "../common/preloader/Preloader";
 import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {
   getUsersSelector,
   getCurrentPage,
