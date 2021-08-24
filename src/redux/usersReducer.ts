@@ -135,12 +135,12 @@ export const getUsers = (currentPage: number, pageSize: number): ThunkType => {
 
 export const follow = (userId: number ): ThunkType => {
   return async (dispatch) => {
-    dispatch(actions.setFollowingProgress(true, userId));
+     dispatch(actions.setFollowingProgress(true, userId));
     let data = await usersAPI.follow(userId);
     if (data.resultCode == 0) {
       dispatch(actions.followSuccess(userId));
     }
-    dispatch(actions.setFollowingProgress(false, userId));
+     dispatch(actions.setFollowingProgress(false, userId));
   };
 };
 
