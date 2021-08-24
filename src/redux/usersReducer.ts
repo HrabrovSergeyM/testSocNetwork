@@ -16,7 +16,7 @@ let initialState = {
   followingInProgress: [] as Array<number>, //array of users ids
 };
 
-type InitialState = typeof initialState
+export type InitialState = typeof initialState
 type ThunkType = BaseThunkType<ActionsTypes>
 type ActionsTypes = InferActionsTypes<typeof actions>
 
