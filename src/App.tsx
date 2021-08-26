@@ -23,14 +23,14 @@ import store, { AppStateType } from "./redux/reduxStore";
 import { Provider } from "react-redux";
 import { Suspense } from "react";
 import { withSuspense } from "./hoc/withSuspense";
-import { UsersPage } from "./components/Users/UsersContainer";
+// import { UsersPage } from "./components/Users/UsersContainer";
 
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
 );
-// const UsersPage = React.lazy(() =>
-//   import("./components/Users/UsersContainer")
-// );
+const UsersPage = React.lazy(() =>
+  import("./components/Users/UsersContainer")
+);
 
 type MapsPropsType = ReturnType<typeof mapStateToProps> 
 type DispatchPropsType = {
