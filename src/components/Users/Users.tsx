@@ -32,12 +32,16 @@ export const Users: React.FC<PropsType> = (props) => {
 
     })
   }, [filter, currentPage])
-  useEffect(() => {
-    const {search} = history.location
-    // const parsed = queryString.parse(search)
+  // useEffect(() => {
+   
+  //   const {search} = history.location
+  //   // const parsed = queryString.parse(search)
+  //   // const search = history.location.search
+  //   const params = new URLSearchParams(search);
+  //   const parsedTerm = params.get("term")
 
-    dispatch(requestUsers(currentPage, pageSize, filter));
-  },[])
+  //   dispatch(requestUsers(currentPage, pageSize, filter));
+  // },[])
 
   const follow = (userId: number) => {
     dispatch(follow(userId))
