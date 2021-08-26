@@ -14,9 +14,14 @@ let initialState = {
   currentPage: 1,
   isFetching: false,
   followingInProgress: [] as Array<number>, //array of users ids
+  filter: {
+    term: '',
+    friend: null as null | boolean
+  }
 };
 
 export type InitialState = typeof initialState
+export type FilterType = typeof initialState.filter
 type ThunkType = BaseThunkType<ActionsTypes>
 type ActionsTypes = InferActionsTypes<typeof actions>
 
@@ -61,6 +66,11 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialState 
           ? [...state.followingInProgress, action.userId]
           : state.followingInProgress.filter((id) => id !== action.userId),
       };
+    case 'SN/USERS/SET_FILTER':
+      return {
+        ...state,
+        filter: action.payload
+      }
 
     default:
       return state;
@@ -116,22 +126,16 @@ export const actions = {
       isFetching,
       userId,
     } as const;
+  },
+  setFilter: (filter: FilterType) => {
+    return {
+      type: 'SN/USERS/SET_FILTER',
+      payload: filter
+    } as const
   }
 }
 
 //thunk
-
-export const getUsers = (currentPage: number, pageSize: number): ThunkType => {
-  return async (dispatch) => {
-    dispatch(actions.setToggleIsFetching(true));
-
-    let data = await usersAPI.getUsers(currentPage, pageSize);
-    dispatch(actions.setToggleIsFetching(false));
-    dispatch(actions.setUsers(data.items));
-    dispatch(actions.setTotalUserCount(data.totalCount));
-    dispatch(actions.setCurrentPage(currentPage));
-  };
-};
 
 export const follow = (userId: number ): ThunkType => {
   return async (dispatch) => {
@@ -154,5 +158,18 @@ export const unfollow = (userId: number ): ThunkType => {
     dispatch(actions.setFollowingProgress(false, userId));
   };
 };
+
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
+return async (dispatch, getState) => {
+dispatch(actions.setToggleIsFetching(true))
+dispatch(actions.setCurrentPage(page))
+dispatch(actions.setFilter(filter))
+
+let data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend)
+dispatch(actions.setToggleIsFetching(false))
+dispatch(actions.setUsers(data.items))
+dispatch(actions.setTotalUserCount(data.totalCount))
+}
+}
 
 export default usersReducer;
