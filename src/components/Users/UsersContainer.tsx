@@ -15,7 +15,7 @@ type UsersPagePropsType = {
   pageTitle: string
 }
 
-export const UsersPage: React.FC<UsersPagePropsType> = (props) => {
+ const UsersPage: React.FC<UsersPagePropsType> = (props) => {
 
   const isFetching = useSelector(getIsFetching)
 
@@ -28,6 +28,7 @@ export const UsersPage: React.FC<UsersPagePropsType> = (props) => {
   );
 }
 
+export default UsersPage;
 
 
 
