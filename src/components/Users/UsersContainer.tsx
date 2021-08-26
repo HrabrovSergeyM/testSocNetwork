@@ -1,6 +1,6 @@
 import React from "react";
 import Users from "./Users";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import {
   follow,
   unfollow,
@@ -44,6 +44,28 @@ type OwnPropsType = {
 
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
+type UsersPagePropsType = {
+  pageTitle: string
+}
+
+// const UsersPage: React.FC<UsersPagePropsType> = (props) => {
+
+//   const isFetching = useSelector(getIsFetching)
+
+//   return (
+//     <>
+//       <h2>{props.pageTitle}</h2>
+//       {props.isFetching ? <Preloader /> : null}
+//       <Users
+//         follow={this.props.follow}
+//         unfollow={this.props.unfollow}
+//         isFetching={this.props.isFetching}
+//         followingInProgress={this.props.followingInProgress}
+//       />
+//     </>
+//   );
+// }
+
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
     const {currentPage, pageSize, filter} = this.props
@@ -66,12 +88,6 @@ class UsersContainer extends React.Component<PropsType> {
         <h2>{this.props.pageTitle}</h2>
         {this.props.isFetching ? <Preloader /> : null}
         <Users
-          users={this.props.users}
-          currentPage={this.props.currentPage}
-          totalUserCount={this.props.totalUserCount}
-          pageSize={this.props.pageSize}
-          onPageChanged={this.onPageChanged}
-          onFilterChanged={this.onFilterChanged}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
           isFetching={this.props.isFetching}
