@@ -1,16 +1,12 @@
-import React from 'react'
-import classes from './../Dialogs.module.css'
+import React from "react";
+import classes from "./../Dialogs.module.css";
 
 type PropsType = {
-    message: string
-}
+  message: string;
+};
 
 const Message: React.FC<PropsType> = (props) => {
-    return(
-        <div className={classes.dialog}>{props.message}</div> 
-    )
-}
+  return <div className={classes.dialog}>{props.message}</div>;
+};
 
-
-
-export default Message
+export default Message;
