@@ -3,14 +3,14 @@ import React, { ChangeEvent } from "react";
 import classes from "./ProfileInfo.module.css";
 
 type PropsTypes = {
-  status: string
-  updateStatus: (newStatus: string) => void
-}
+  status: string;
+  updateStatus: (newStatus: string) => void;
+};
 
 type StateTypes = {
-  editMode: boolean
-  status: string
-}
+  editMode: boolean;
+  status: string;
+};
 
 class ProfileStatus extends React.Component<PropsTypes, StateTypes> {
   state = {
