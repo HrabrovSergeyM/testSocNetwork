@@ -30,7 +30,7 @@ export const Header: React.FC<MapPropsType> = () => {
     <Row>
         <Col span={18}>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                <Menu.Item key="1"><Link to="/developers">Developers</Link></Menu.Item>
+                <Menu.Item key="1"><Link to="/users">Users</Link></Menu.Item>
             </Menu>
         </Col>
 
