@@ -1,5 +1,4 @@
 import axios from "axios";
-import { follow } from "../redux/usersReducer";
 import { UserType } from "../types/types";
 
 export const instance = axios.create({
@@ -11,10 +10,10 @@ export const instance = axios.create({
 });
 
 export type APIResponseType<D = {}, RC = ResultCodesEnum> = {
-  data: D
-  messages: Array<string>
-  resultCode: RC
-}
+  data: D;
+  messages: Array<string>;
+  resultCode: RC;
+};
 
 export enum ResultCodesEnum {
   Success = 0,
@@ -23,16 +22,7 @@ export enum ResultCodesEnum {
 }
 
 export type GetItemsType = {
-  items: Array<UserType>
-  totalCount: number
-  error: string | null
-
-} 
-
-
-
-
-
-
-
-
+  items: Array<UserType>;
+  totalCount: number;
+  error: string | null;
+};
