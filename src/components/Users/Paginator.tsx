@@ -3,12 +3,12 @@ import classes from "./Paginator.module.css";
 import cn from "classnames";
 
 type PropsType = {
-  totalUserCount: number,
-  pageSize: number,
-  currentPage: number,
-  onPageChanged: (pageNumber: number) => void,
-  portionSize?: number,
-}
+  totalUserCount: number;
+  pageSize: number;
+  currentPage: number;
+  onPageChanged: (pageNumber: number) => void;
+  portionSize?: number;
+};
 
 let Paginator: React.FC<PropsType> = ({
   totalUserCount,
