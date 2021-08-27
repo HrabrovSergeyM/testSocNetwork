@@ -1,13 +1,13 @@
-import { InferActionsTypes } from './reduxStore';
+import { InferActionsTypes } from "./reduxStore";
 
 type DialogsDataType = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 type MessagesDataType = {
-  id: number
-  message: string
-}
+  id: number;
+  message: string;
+};
 
 let initialState = {
   dialogsData: [
@@ -44,16 +44,19 @@ let initialState = {
   ] as Array<MessagesDataType>,
 };
 
-export type InitialStateType = typeof initialState
-type ActionsType = InferActionsTypes<typeof actions>
+export type InitialStateType = typeof initialState;
+type ActionsType = InferActionsTypes<typeof actions>;
 
 export const actions = {
   sendMessage: (newMessage: string) => {
     return { type: "SN/DIALOGS/SEND_MESSAGE", newMessage } as const;
-  }
-}
+  },
+};
 
-const dialogsReducer = (state = initialState, action: ActionsType): InitialStateType => {
+const dialogsReducer = (
+  state = initialState,
+  action: ActionsType
+): InitialStateType => {
   switch (action.type) {
     case "SN/DIALOGS/SEND_MESSAGE": {
       let newMessage = action.newMessage;
@@ -75,8 +78,6 @@ const dialogsReducer = (state = initialState, action: ActionsType): InitialState
       return state;
   }
 };
-
-
 
 // export const updateNewMessageTextActionCreator = (text) => {
 //   return { type: UPDATE_NEW_MESSAGE_TEXT, newText: text };
