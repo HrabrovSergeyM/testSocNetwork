@@ -1,3 +1,5 @@
+import { ChatMessageType } from "../redux/chatReducer";
+
 export type ChatMessageAPIType = {
   message: string;
   photo: string;
@@ -5,7 +7,7 @@ export type ChatMessageAPIType = {
   userName: string;
 };
 
-type MessagesReceivedSubscriberType = (messages: ChatMessageAPIType[]) => void;
+type MessagesReceivedSubscriberType = (messages: ChatMessageType[]) => void;
 type StatusChangedSubscriberType = (status: StatusType) => void;
 type EventsNamesType = "messagesReceived" | "statusChanged";
 export type StatusType = "pending" | "ready" | "error";
