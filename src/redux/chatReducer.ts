@@ -7,7 +7,13 @@ import { v1 } from "uuid";
 export type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof actions>;
 type ThunkType = BaseThunkType<ActionsType | FormAction>;
-type ChatMessageType = ChatMessageAPIType & { id: string };
+export type ChatMessageType = {
+  message: string;
+  photo: string;
+  userId: number;
+  userName: string;
+  id: string;
+};
 
 let initialState = {
   messages: [] as ChatMessageType[],
@@ -52,12 +58,11 @@ export const actions = {
   },
 };
 
-let _newMessageHandler: ((messages: ChatMessageAPIType[]) => void) | null =
+let _newMessageHandler: ((messages: ChatMessageType[]) => void) | null =
   null;
 const newMessageHandlerCreator = (dispatch: Dispatch) => {
   if (_newMessageHandler === null) {
     _newMessageHandler = (messages) => {
-      //@ts-ignore
       dispatch(actions.messagesReceived(messages));
     };
   }
